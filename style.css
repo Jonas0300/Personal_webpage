@@ -1,0 +1,399 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --hero-bg: linear-gradient(135deg, #f5f7fa 0%, #e8eaec 100%);
+  --secondary-text: #666;
+  --card-bg: #ffffff;
+  --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --hero-bg: linear-gradient(135deg, #2d3436 0%, #1a1a1a 100%);
+  --secondary-text: #cccccc;
+  --card-bg: #2d2d2d;
+  --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: var(--bg-color);
+  background-image: radial-gradient(var(--secondary-text) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: -25px -25px;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero {
+  background: var(--hero-bg);
+  padding: 120px 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 48%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 52%
+  );
+  background-size: 200% 200%;
+  animation: shine 8s linear infinite;
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  animation: slideInDown 0.8s ease-out;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(45deg, var(--text-color), #666);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1.2em;
+  color: var(--secondary-text);
+  max-width: 600px;
+  margin: 0 auto;
+  animation: slideInUp 0.8s ease-out;
+}
+
+.projects {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.button {
+  display: inline-block;
+  padding: 25px;
+  margin: 10px;
+  text-decoration: none;
+  background: var(--card-bg);
+  color: #ffffff;
+  border-radius: 15px;
+  font-size: 24px;
+  /* font-family: "Pacifico", cursive; */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateY(0);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  transform: translateY(100%);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.button:hover::before {
+  transform: translateY(0);
+}
+
+.button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual button colors */
+.button.button-1 {
+  background-color: #f44336;
+  /* font-family: "Pacifico", cursive; */
+}
+
+.button.button-1 h3 {
+  font-family: "Pacifico", cursive;
+  font-size: 2em;
+  font-weight: normal;
+  margin: auto;
+}
+
+.button.button-2 {
+  background-color: #17a2b8; /* Teal */
+}
+
+/* Responsive design for mobile devices */
+@media screen and (max-width: 600px) {
+  .button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bio-list {
+    width: 90%; /* Ensure bio-list is centered */
+    margin: 20px auto;
+  }
+
+  .profile-image img {
+    width: 150px; /* Adjust profile image size for mobile */
+    height: 150px;
+  }
+
+  .projects {
+    padding: 40px 10px; /* Adjust padding for mobile */
+  }
+}
+
+.profile-image {
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease-in;
+}
+
+.profile-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.profile-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+#themeToggle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--card-bg);
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+}
+
+#themeToggle .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+}
+
+#themeToggle .sun {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0);
+}
+
+#themeToggle .moon {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+[data-theme="dark"] #themeToggle .sun {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+[data-theme="dark"] #themeToggle .moon {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0);
+}
+
+#themeToggle:hover {
+  transform: scale(1.1);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.social-links {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.social-link {
+  font-size: 32px;
+  color: var(--text-color);
+  background: var(--card-bg);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--card-shadow);
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-link:hover i {
+  transform: scale(1.1);
+}
+
+/* Update platform-specific hover styles */
+.social-link[href*="github"]:hover {
+  background-color: #6e5494;
+  color: #ffffff;
+}
+
+.social-link[href*="linkedin"]:hover {
+  background-color: #0077b5;
+  color: #ffffff;
+}
+
+.social-link[href*="mailto"]:hover {
+  background-color: #ea4335;
+  color: #ffffff;
+}
+
+.bio-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px auto;
+  text-align: left;
+  max-width: 600px;
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1em; /* Slightly increased font size */
+  line-height: 1.5; /* Increased line height for readability */
+}
+
+.bio-list li {
+  margin-bottom: 15px; /* Increased margin */
+  padding-left: 25px; /* Increased padding */
+  position: relative;
+  animation: fadeInLeft 0.8s ease-out; /* Added animation */
+  background: rgba(0, 0, 0, 0.05); /* Light background for contrast */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding inside the list item */
+}
+
+/* Removed the bullet points */
+.bio-list li::before {
+  content: "";
+}
+
+[data-theme="dark"] .bio-list li {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Light background for contrast in dark mode */
+}
