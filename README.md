@@ -11,7 +11,7 @@ This website highlights my skills and projects, providing an interactive and vis
 - 🌗 Light/Dark theme toggle
 - 📱 Responsive design for mobile devices
 - 🎨 Animated elements for enhanced user experience
-- 💼 Project showcase with detailed descriptions
+- 💼 Project showcase with descriptions
 - 🔗 Social media links
 
 ## Explanation 📝
