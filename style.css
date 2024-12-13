@@ -534,26 +534,65 @@ body {
 
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(5, 120px); /* Force 5 columns of 120px each */
   gap: 50px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: min(
+    1200px,
+    calc(120px * 5 + 200px)
+  ); /* Adjust for 5 items plus gaps */
   margin: 0 auto;
+  justify-content: center;
 }
 
+/* Primary Skills */
 .skill {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 120px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all var(--theme-transition);
+  margin: 0 auto; /* Center within grid cell */
 }
 
 .skill i {
-  font-size: 4em;
-  color: var(--text-color);
+  font-size: 3em; /* Adjust the size for primary skills */
+}
+
+.skill p {
+  font-size: 1em;
+  margin: 0;
+}
+
+/* Line break */
+.skill-break {
+  grid-column: 1 / -1; /* Span all columns */
+  width: 100%;
+  border-top: 1px solid var(--secondary-text);
+  margin: 20px 0;
+  opacity: 0.5;
+}
+
+/* Less Familiar Skills */
+.skill.less-familiar {
+  transform: scale(0.75); /* Slightly smaller than primary skills */
+  opacity: 0.8;
+}
+
+.skill.less-familiar i {
+  font-size: 2em; /* Adjust the size for less familiar skills */
+}
+
+.skill.less-familiar p {
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.skill.less-familiar:hover {
+  transform: scale(0.9);
+  opacity: 1;
 }
 
 /* Tablet breakpoint */
@@ -573,15 +612,13 @@ body {
   }
 
   .skill i {
-    font-size: 3em;
+    font-size: 2.5em; /* Adjust the size for primary skills on tablet */
     display: block;
     margin-bottom: 5px;
   }
 
-  .skill p {
-    font-size: 0.9em;
-    margin: 0;
-    width: 100%;
+  .skill.less-familiar i {
+    font-size: 1.5em; /* Adjust the size for less familiar skills on tablet */
   }
 }
 
@@ -614,6 +651,17 @@ body {
   }
 }
 
+/* ...existing code... */
+.skill-break {
+  width: 100%;
+  border-top: 1px solid var(--secondary-text);
+  margin: 20px 20px;
+}
+
+.skill.less-familiar {
+  transform: scale(0.85);
+  opacity: 0.8;
+}
 /* ...existing code... */
 
 .copyright {
